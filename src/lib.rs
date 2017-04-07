@@ -22,7 +22,7 @@
 /// The lists will grow up to 12 elements, which is the same amount of elements
 /// up to which standard traits like `Debug` and `Clone` are implemented for
 /// tuples. If, for some strange reason, this isn't enough for you, use
-/// `[va_invoke_more](macro.va_invoke_more.html)`.
+/// [`va_invoke_more`](macro.va_invoke_more.html).
 #[macro_export]
 macro_rules! va_invoke {
     ($mac:ident $($cur_args:tt)*) => {
@@ -41,7 +41,7 @@ macro_rules! va_invoke {
     };
 }
 
-/// Like `[va_invoke](macro.va_invoke.html)`, but with lists of up to 32
+/// Like [`va_invoke`](macro.va_invoke.html), but with lists of up to 32
 /// elements.
 ///
 /// ```ignore
@@ -86,7 +86,7 @@ macro_rules! va_invoke_more {
     };
 }
 
-/// Like `[va_invoke](macro.va_invoke.html)`, but with lists of up to 32
+/// Like [`va_invoke`](macro.va_invoke.html), but with lists of up to 32
 /// elements
 /// and also includes an "empty list".
 ///
@@ -111,7 +111,7 @@ macro_rules! va_invoke_with_nil {
     };
 }
 
-/// Like `[va_invoke](macro.va_invoke_more.html)`, but uses  also includes an
+/// Like [`va_invoke`](macro.va_invoke_more.html), but uses  also includes an
 /// "empty list".
 ///
 /// ```ignore
@@ -155,7 +155,7 @@ macro_rules! _va_expand {
 }
 
 /// Generates a macro for you and immediatly passes it on to
-/// `[va_invoke](macro.va_invoke.html)`.
+/// [`va_invoke`](macro.va_invoke.html).
 ///
 /// ```ignore
 /// va_expand!{ ($va_len:tt) ($($va_idents),+) ($($va_indices:tt),+)
@@ -197,8 +197,8 @@ macro_rules! va_expand {
     };
 }
 
-/// Like `[va_expand](macro.va_expand.html)`, but uses
-/// `[va_invoke_more](macro.va_invoke_more.html)`.
+/// Like [`va_expand`](macro.va_expand.html), but uses
+/// [`va_invoke_more`](macro.va_invoke_more.html).
 #[macro_export]
 macro_rules! va_expand_more {
     ($($tt:tt)+) => {
@@ -206,13 +206,13 @@ macro_rules! va_expand_more {
     };
 }
 
-/// Like `[va_expand](macro.va_expand.html)`, but uses
-/// `[va_invoke_with_nil](macro.va_invoke_with_nil.html)`.
+/// Like [`va_expand`](macro.va_expand.html), but uses
+/// [`va_invoke_with_nil`](macro.va_invoke_with_nil.html).
 ///
 /// ---
 /// **NOTE** `$va_idents` and `$va_indices` can be empty, so unlike
-/// `[va_expand](macro.va_expand.html)` or
-/// `[va_expand_more](macro.va_expand_more.html)`,
+/// [`va_expand`](macro.va_expand.html) or
+/// [`va_expand_more`](macro.va_expand_more.html),
 /// you are required to use zero-or-more repetitions here (`$()*`).
 #[macro_export]
 macro_rules! va_expand_with_nil {
@@ -221,13 +221,13 @@ macro_rules! va_expand_with_nil {
     };
 }
 
-/// Like `[va_expand](macro.va_expand.html)`, but uses
-/// `[va_invoke_more_with_nil](macro.va_invoke_more_with_nil.html)`.
+/// Like [`va_expand`](macro.va_expand.html), but uses
+/// [`va_invoke_more_with_nil`](macro.va_invoke_more_with_nil.html).
 ///
 /// ---
 /// **NOTE** `$va_idents` and `$va_indices` can be empty, so unlike
-/// `[va_expand](macro.va_expand.html)` or
-/// `[va_expand_more](macro.va_expand_more.html)`,
+/// [`va_expand`](macro.va_expand.html) or
+/// [`va_expand_more`](macro.va_expand_more.html),
 /// you are required to use zero-or-more repetitions here (`$()*`).
 #[macro_export]
 macro_rules! va_expand_more_with_nil {
