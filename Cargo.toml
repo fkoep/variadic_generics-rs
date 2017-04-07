@@ -1,0 +1,11 @@
+[package]
+name = "variadic_generics"
+version = "0.1.0"
+authors = ["Felix Köpge <fkoep@mailbox.org>"]
+license = "MIT"
+
+description = "A first attempt in using traits & tuples to work around Rusts lack of variadic generics."
+documentation = "https://docs.rs/variadic_generics"
+repository = "https://github.com/fkoep/variadic_generics-rs"
+readme = "README.md"
+categories = ["no-std", "rust-patterns"]
