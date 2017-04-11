@@ -1,4 +1,4 @@
-# downcast
+# variadic_generics
 
 [![](http://meritbadge.herokuapp.com/variadic_generics)](https://crates.io/crates/variadic_generics)
 
