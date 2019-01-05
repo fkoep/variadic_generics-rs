@@ -3,13 +3,13 @@ extern crate variadic_generics;
 
 pub trait OptionTuple {
     type Values;
-    fn collect(self) -> Option<Self::Values>;
+    fn tuplewrap(self) -> Option<Self::Values>;
 }
 
 va_expand!{ ($va_len:tt) ($($va_idents:ident),+) ($($va_indices:tt),+)
     impl<$($va_idents),+> OptionTuple for ($(Option<$va_idents>,)+) {
         type Values = ($($va_idents,)+);
-        fn collect(self) -> Option<Self::Values> {
+        fn tuplewrap(self) -> Option<Self::Values> {
             Some((
                 $(match self.$va_indices { Some(r) => r, None => return None },)+
             ))
@@ -19,7 +19,7 @@ va_expand!{ ($va_len:tt) ($($va_idents:ident),+) ($($va_indices:tt),+)
 
 fn main() {
     let options = (Some("foo"), Some(42), Some(vec![2, 3, 4]));
-    let values = options.clone().collect().unwrap();
+    let values = options.clone().tuplewrap().unwrap();
     println!("options: {:?}", options);
     println!("values: {:?}", values);
 }
