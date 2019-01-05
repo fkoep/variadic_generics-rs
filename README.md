@@ -23,7 +23,7 @@ extern crate variadic_generics;
 ```
 
 * [option_tuple](examples/option_tuple.rs) showcases how to implement
-  `(Option<T>...) -> Option<(T...)>`
+  `flatwrap(Option<T>...) -> Option<(T...)>`
 
 ## contribution guidelines
 
