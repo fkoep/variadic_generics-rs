@@ -1,8 +1,9 @@
 [package]
 name = "variadic_generics"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Felix Köpge <fkoep@mailbox.org>"]
 license = "MIT"
+edition = "2018"
 
 description = "A first attempt in using traits & tuples to work around Rusts lack of variadic generics."
 documentation = "https://docs.rs/variadic_generics"
