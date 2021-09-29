@@ -107,7 +107,7 @@ macro_rules! va_invoke_more {
 macro_rules! va_invoke_with_nil {
     ($mac:ident $($cur_args:tt)*) => {
         $mac!($($cur_args)* (0) () ());
-        va_invoke!($mac $($cur_args)*);
+        $crate::va_invoke!($mac $($cur_args)*);
     };
 }
 
@@ -131,7 +131,7 @@ macro_rules! va_invoke_with_nil {
 macro_rules! va_invoke_more_with_nil {
     ($mac:ident $($cur_args:tt)*) => {
         $mac!($($cur_args)* (0) () ());
-        va_invoke_more!($mac $($cur_args)*);
+        $crate::va_invoke_more!($mac $($cur_args)*);
     };
 }
 
@@ -140,13 +140,13 @@ macro_rules! va_invoke_more_with_nil {
 #[doc(hidden)]
 #[macro_export]
 macro_rules! _va_expand {
-    ($invoke_mac:ident ($($pat_va_len:tt)+) $pat_va_idents:tt $pat_va_indices:tt $($mac_body:tt)*) => {
+    (($invoke_mac:path) ($($pat_va_len:tt)+) $pat_va_idents:tt $pat_va_indices:tt $($mac_body:tt)*) => {
         macro_rules! _va_mac {
             (($($pat_va_len)+) $pat_va_idents $pat_va_indices) => { $($mac_body)* }
         }
         $invoke_mac!(_va_mac);
     };
-    ($invoke_mac:ident $dummy_mac:ident $pat_va_len:tt $pat_va_idents:tt $pat_va_indices:tt $($mac_body:tt)*) => {
+    (($invoke_mac:path) $dummy_mac:ident $pat_va_len:tt $pat_va_idents:tt $pat_va_indices:tt $($mac_body:tt)*) => {
         macro_rules! $dummy_mac {
             ($pat_va_len $pat_va_idents $pat_va_indices) => { $($mac_body)* }
         }
@@ -193,7 +193,7 @@ macro_rules! _va_expand {
 #[macro_export]
 macro_rules! va_expand {
     ($($tt:tt)+) => {
-        _va_expand!(va_invoke $($tt)*);
+        $crate::_va_expand!(($crate::va_invoke) $($tt)*);
     };
 }
 
@@ -202,7 +202,7 @@ macro_rules! va_expand {
 #[macro_export]
 macro_rules! va_expand_more {
     ($($tt:tt)+) => {
-        _va_expand!(va_invoke_more $($tt)*);
+        $crate::_va_expand!(($crate::va_invoke_more) $($tt)*);
     };
 }
 
@@ -217,7 +217,7 @@ macro_rules! va_expand_more {
 #[macro_export]
 macro_rules! va_expand_with_nil {
     ($($tt:tt)+) => {
-        _va_expand!(va_invoke_with_nil $($tt)*);
+        $crate::_va_expand!(($crate::va_invoke_with_nil) $($tt)*);
     };
 }
 
@@ -232,7 +232,7 @@ macro_rules! va_expand_with_nil {
 #[macro_export]
 macro_rules! va_expand_more_with_nil {
     ($($tt:tt)+) => {
-        _va_expand!(va_invoke_more_with_nil $($tt)*);
+        $crate::_va_expand!(($crate::va_invoke_more_with_nil) $($tt)*);
     };
 }
 
